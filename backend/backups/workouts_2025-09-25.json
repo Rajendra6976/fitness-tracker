@@ -1,0 +1,62 @@
+[
+  {
+    "id": 28,
+    "type": "Swimming",
+    "duration": 7,
+    "calories": 77,
+    "date": "2025-09-25",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-25T04:29:41.393Z"
+  },
+  {
+    "id": 29,
+    "type": "Swimming",
+    "duration": 6,
+    "calories": 66,
+    "date": "2025-09-25",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-25T04:33:35.591Z"
+  },
+  {
+    "id": 30,
+    "type": "Swimming",
+    "duration": 1,
+    "calories": 11,
+    "date": "2025-09-25",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-25T04:36:09.863Z"
+  },
+  {
+    "id": 31,
+    "type": "Running",
+    "duration": 5,
+    "calories": 50,
+    "date": "2025-09-25",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-25T04:49:13.431Z"
+  },
+  {
+    "id": 32,
+    "type": "Swimming",
+    "duration": 10,
+    "calories": 110,
+    "date": "2025-09-25",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-25T04:55:02.109Z"
+  },
+  {
+    "id": 33,
+    "type": "Swimming",
+    "duration": 15,
+    "calories": 165,
+    "date": "2025-09-25",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-25T06:03:44.880Z"
+  }
+]

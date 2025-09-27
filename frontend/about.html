@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>About - Fitness Tracker</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<div class="sidebar-header">
+			<span class="sidebar-logo">🏋️‍♂️</span>
+			<span class="sidebar-title">Fitness Tracker</span>
+		</div>
+		<nav class="sidebar-nav">
+			<a href="./home.html" class="active">Home</a>
+			<a href="/progress.html">Progress</a>
+			<a href="/reports.html">Reports</a>
+			<a href="./gym-guide.html">gym guide</a>
+			<a href="./reminder.html" class="active">Remainder</a>
+			<a href="/about.html" class="active">About</a>
+			<a href="/help.html">Help</a>
+			<a href="/settings.html">Settings</a>
+			<a href="/chatbot.html">Chatbot</a>
+			<a href="./logout.html">logout</a>
+		</nav>
+		<div class="sidebar-user">
+			<div class="user-avatar">👤</div>
+			<div class="user-name">raj</div>
+			<a href="/logout.html" class="logout-btn">Logout</a>
+		</div>
+	</div>
+			<main class="main-content">
+				<div style="display:flex;justify-content:flex-end;align-items:center;margin-bottom:12px;">
+				  <input id="settings-bot-input" type="text" placeholder="Search or ask... (e.g. 'open reminder', 'logout')" style="padding:10px 14px;font-size:1rem;border-radius:8px;border:1.5px solid #b7e4c7;width:220px;">
+				  <button onclick="window.openSetting(document.getElementById('settings-bot-input').value)" style="padding:10px 18px;font-size:1rem;border-radius:8px;background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;font-weight:700;border:none;cursor:pointer;margin-left:8px;">Search</button>
+				</div>
+				<div id="exercise-reminder-bar" style="background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;padding:14px 24px;border-radius:10px;margin-bottom:24px;font-size:1.15rem;font-weight:600;max-width:600px;box-shadow:0 2px 8px rgba(30,60,114,0.10);"></div>
+		   <h1 class="dashboard-title">About</h1>
+			<div class="chart-section">
+					<h2 style="color:#43cea2;">About Fitness Tracker</h2>
+					<p>Fitness Tracker is your all-in-one solution to monitor, analyze, and improve your fitness journey. Our mission is to empower users to achieve their health goals by providing easy-to-use tools for tracking workouts, visualizing progress, and staying motivated every day.</p>
+					<ul style="margin-top:16px;line-height:1.7;">
+						<li><b>Track Workouts:</b> Log your daily exercises, duration, and calories burned.</li>
+						<li><b>Visual Progress:</b> Interactive charts and reports help you see your improvements over time.</li>
+						<li><b>Reminders:</b> Stay on track with customizable exercise reminders.</li>
+						<li><b>Beginner Guides:</b> Access gym guides and tips for all fitness levels.</li>
+						<li><b>Personalization:</b> Set your own goals and preferences for a tailored experience.</li>
+					</ul>
+					<p style="margin-top:18px;">Whether you're a beginner or a fitness enthusiast, Fitness Tracker is designed to make your health journey simple, fun, and effective!</p>
+					<hr style="margin:24px 0;">
+					<h3 style="color:#185a9d;">Add Your Fitness Task to Google Calendar</h3>
+					<p>You can add any custom fitness task as a Google Calendar event. Click below and fill in your own task name, time, and details:</p>
+					<a href="https://calendar.google.com/calendar/render?action=TEMPLATE" target="_blank" style="color:#43cea2;font-weight:700;font-size:1.1rem;">Create Custom Fitness Task in Google Calendar</a>
+					<br><small>Tip: In the Google Calendar window, enter your task name, set the time, and choose 'Repeat' for daily/weekly reminders.</small>
+			</div>
+	</main>
+	<footer class="footer-bar">
+		<span>© 2025 Fitness Tracker. All rights reserved.</span>
+	</footer>
+		<script src="/reminder-bar.js"></script>
+		<script src="/settings-bot.js"></script>
+</body>
+</html>

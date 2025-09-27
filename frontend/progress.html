@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress - Fitness Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <style>
+        .progress-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 800px){ .progress-grid { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <span class="sidebar-logo">🏋️‍♂️</span>
+            <span class="sidebar-title">Fitness Tracker</span>
+        </div>
+        <nav class="sidebar-nav">
+           
+            <a href="./home.html" class="active">Home</a>
+            <a href="./progress.html" class="active">progress</a>
+            <a href="/reports.html">Reports</a>
+            <a href="./gym-guide.html">gym guide</a>
+            <a href="./reminder.html" class="active">Remainder</a>
+            <a href="/about.html">About</a>
+            <a href="/help.html">Help</a>
+            <a href="/settings.html">Settings</a>
+            <a href="/chatbot.html">Chatbot</a>
+        </nav>
+        <div class="sidebar-user">
+            <div class="user-avatar">👤</div>
+            <div class="user-name">raj</div>
+            <a href="#" onclick="logoutUser(); return false;" class="logout-btn">Logout</a>
+        </div>
+    </div>
+    <main class="main-content">
+        <div style="display:flex;justify-content:flex-end;align-items:center;margin-bottom:12px;">
+          <input id="settings-bot-input" type="text" placeholder="Search or ask... (e.g. 'open reminder', 'logout')" style="padding:10px 14px;font-size:1rem;border-radius:8px;border:1.5px solid #b7e4c7;width:220px;">
+          <button onclick="window.openSetting(document.getElementById('settings-bot-input').value)" style="padding:10px 18px;font-size:1rem;border-radius:8px;background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;font-weight:700;border:none;cursor:pointer;margin-left:8px;">Search</button>
+        </div>
+        <div id="exercise-reminder-bar" style="background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;padding:14px 24px;border-radius:10px;margin-bottom:24px;font-size:1.15rem;font-weight:600;max-width:600px;box-shadow:0 2px 8px rgba(30,60,114,0.10);"></div>
+                <h1 class="dashboard-title">Your Progress</h1>
+                <div class="dashboard-charts" style="flex-direction: column; gap: 24px;">
+            <div class="chart-section">
+                <div class="chart-title">Calories by Type</div>
+                <canvas id="byType"></canvas>
+            </div>
+            <div class="chart-section">
+                <div class="chart-title">Duration by Day</div>
+                <canvas id="byDay"></canvas>
+            </div>
+            <div class="chart-section">
+                <div class="chart-title">Task Completion</div>
+                <canvas id="completion"></canvas>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-bar">
+        <span>© 2025 Fitness Tracker. All rights reserved.</span>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+    <script>
+        const API_URL = 'http://localhost:3000/api/workouts';
+        fetch(API_URL).then(r=>r.json()).then(workouts => {
+            const totalsByType = workouts.reduce((a,w)=>{const k=w.type||'Other';a[k]=(a[k]||0)+(Number(w.calories)||0);return a;},{});
+            const labels = Object.keys(totalsByType);
+            const data = labels.map(l=>totalsByType[l]);
+            new Chart(document.getElementById('byType').getContext('2d'), {type:'doughnut', data:{labels, datasets:[{data, backgroundColor:['#43cea2','#185a9d','#f09819','#ff5858','#56ab2f','#a8e063']}]}, options:{plugins:{title:{display:true,text:'Calories by Type'}}}});
+
+            const totalsByDay = workouts.reduce((a,w)=>{const d=new Date((w.date||'')+'T00:00:00');const k=isNaN(d)?'':d.toLocaleDateString(undefined,{weekday:'short'});a[k]=(a[k]||0)+(Number(w.duration)||0);return a;},{});
+            const dLabels = Object.keys(totalsByDay);
+            const dData = dLabels.map(l=>totalsByDay[l]);
+            new Chart(document.getElementById('byDay').getContext('2d'), {type:'bar', data:{labels:dLabels, datasets:[{label:'Minutes', data:dData, backgroundColor:'#185a9d'}]}, options:{plugins:{title:{display:true,text:'Duration by Day'}}, scales:{y:{beginAtZero:true}}}});
+
+            const completed = workouts.filter(w => Number(w.completed) === 1).length;
+            const pending = workouts.length - completed;
+            new Chart(document.getElementById('completion').getContext('2d'), {type:'pie', data:{labels:['Completed','Pending'], datasets:[{data:[completed,pending], backgroundColor:['#56ab2f','#f09819']}]} , options:{plugins:{title:{display:true,text:'Task Completion'}}}});
+        });
+    </script>
+    <script src="/reminder-bar.js"></script>
+    <script src="/settings-bot.js"></script>
+    <script src="/logout.js"></script>
+</body>
+</html>
+
+

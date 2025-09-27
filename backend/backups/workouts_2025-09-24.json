@@ -1,0 +1,52 @@
+[
+  {
+    "id": 23,
+    "type": "Swimming",
+    "duration": 21,
+    "calories": 231,
+    "date": "2025-09-24",
+    "username": "srujana",
+    "userId": 5,
+    "timestamp": "2025-09-24T09:04:57.122Z"
+  },
+  {
+    "id": 24,
+    "type": "Swimming",
+    "duration": 60,
+    "calories": 660,
+    "date": "2025-09-25",
+    "username": "srujana",
+    "userId": 5,
+    "timestamp": "2025-09-24T09:05:13.710Z"
+  },
+  {
+    "id": 25,
+    "type": "Cycling",
+    "duration": 20,
+    "calories": 160,
+    "date": "2025-09-24",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-24T16:21:53.935Z"
+  },
+  {
+    "id": 26,
+    "type": "Swimming",
+    "duration": 30,
+    "calories": 330,
+    "date": "2025-09-24",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-24T17:43:39.248Z"
+  },
+  {
+    "id": 27,
+    "type": "Cycling",
+    "duration": 4,
+    "calories": 32,
+    "date": "2025-09-25",
+    "username": "guest",
+    "userId": 2,
+    "timestamp": "2025-09-24T18:37:24.182Z"
+  }
+]

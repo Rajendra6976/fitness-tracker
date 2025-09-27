@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beginner Gym Guide - Fitness Tracker</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">🏋️‍♂️</span>
+      <span class="sidebar-title">Fitness Tracker</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/home.html">Home</a>
+      <a href="/progress.html">Progress</a>
+      <a href="/reports.html">Reports</a>
+      <a href="/gym-guide.html" class="active">Gym Guide</a>
+      <a href="./reminder.html" class="active">Remainder</a>
+      <a href="/about.html">About</a>
+      <a href="/help.html">Help</a>
+  <a href="/settings.html">Settings</a>
+  <a href="/chatbot.html">Chatbot</a>
+      
+    </nav>
+    <div class="sidebar-user">
+      <div class="user-avatar">👤</div>
+      <div class="user-name">raj</div>
+      <a href="/logout.html" class="logout-btn">Logout</a>
+    </div>
+  </div>
+  <main class="main-content">
+    <div style="display:flex;justify-content:flex-end;align-items:center;margin-bottom:12px;">
+      <input id="settings-bot-input" type="text" placeholder="Search or ask... (e.g. 'open reminder', 'logout')" style="padding:10px 14px;font-size:1rem;border-radius:8px;border:1.5px solid #b7e4c7;width:220px;">
+      <button onclick="window.openSetting(document.getElementById('settings-bot-input').value)" style="padding:10px 18px;font-size:1rem;border-radius:8px;background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;font-weight:700;border:none;cursor:pointer;margin-left:8px;">Search</button>
+    </div>
+    <div id="exercise-reminder-bar" style="background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;padding:14px 24px;border-radius:10px;margin-bottom:24px;font-size:1.15rem;font-weight:600;max-width:600px;box-shadow:0 2px 8px rgba(30,60,114,0.10);"></div>
+    <h1 class="dashboard-title">Beginner Gym Guide</h1>
+    <div class="chart-section" style="max-width:900px;margin-bottom:32px;">
+      <h2 style="color:#2a5298;">Getting Started: Tips for Men & Women</h2>
+      <ul style="font-size:1.1rem;line-height:1.7;">
+        <li><b>Consult a Doctor:</b> If you have any health concerns, check with your doctor before starting.</li>
+        <li><b>Start Slow:</b> Begin with 2-3 days per week, focusing on full-body workouts.</li>
+        <li><b>Warm Up:</b> Always start with 5-10 minutes of light cardio and dynamic stretching.</li>
+        <li><b>Learn Proper Form:</b> Use light weights and focus on technique before increasing load.</li>
+        <li><b>Balance:</b> Include both strength and cardio exercises for overall fitness.</li>
+        <li><b>Rest:</b> Allow at least one rest day between sessions for recovery.</li>
+        <li><b>Hydrate & Eat Well:</b> Drink water and eat a balanced diet to fuel your workouts.</li>
+      </ul>
+      <h2 style="color:#2a5298;margin-top:32px;">Sample Full-Body Routine (3 Days/Week)</h2>
+      <table style="width:100%;margin-top:16px;background:#fff;border-radius:12px;box-shadow:0 2px 8px rgba(30,60,114,0.08);">
+        <thead style="background:#2a5298;color:#fff;">
+          <tr><th>Exercise</th><th>Sets</th><th>Reps</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Squats</td><td>3</td><td>10-12</td><td>Bodyweight or light dumbbells</td></tr>
+          <tr><td>Push-Ups (Knee/Standard)</td><td>3</td><td>8-12</td><td>Modify as needed</td></tr>
+          <tr><td>Lat Pulldown / Assisted Pull-Up</td><td>3</td><td>8-10</td><td>Use machine or bands</td></tr>
+          <tr><td>Dumbbell Shoulder Press</td><td>3</td><td>10-12</td><td>Light weights</td></tr>
+          <tr><td>Glute Bridge</td><td>3</td><td>12-15</td><td>Bodyweight</td></tr>
+          <tr><td>Plank</td><td>3</td><td>20-30 sec</td><td>Focus on form</td></tr>
+          <tr><td>Cardio (Treadmill/Bike)</td><td>1</td><td>10-15 min</td><td>Moderate pace</td></tr>
+        </tbody>
+      </table>
+      <h2 style="color:#2a5298;margin-top:32px;">Tips for Women</h2>
+      <ul style="font-size:1.1rem;line-height:1.7;">
+        <li>Strength training will not make you bulky; it helps build lean muscle and burn fat.</li>
+        <li>Focus on compound movements (squats, presses, rows) for best results.</li>
+        <li>Don't be afraid to use weights—start light and progress gradually.</li>
+      </ul>
+      <h2 style="color:#2a5298;margin-top:32px;">Tips for Men</h2>
+      <ul style="font-size:1.1rem;line-height:1.7;">
+        <li>Don't skip leg day—train all major muscle groups for balance.</li>
+        <li>Be patient with progress; consistency is key.</li>
+        <li>Stretch after workouts to improve flexibility and reduce soreness.</li>
+      </ul>
+      <p style="margin-top:32px;color:#2a5298;font-weight:600;">Remember: Progress takes time. Stay consistent, listen to your body, and enjoy your fitness journey!</p>
+    </div>
+  </main>
+  <footer class="footer-bar">
+    <span>© 2025 Fitness Tracker. All rights reserved.</span>
+  </footer>
+  <script src="/reminder-bar.js"></script>
+  <script src="/settings-bot.js"></script>
+</body>
+</html>
