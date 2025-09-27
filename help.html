@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Help - Fitness Tracker</title>
+	<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+	<div class="sidebar">
+		<div class="sidebar-header">
+			<span class="sidebar-logo">🏋️‍♂️</span>
+			<span class="sidebar-title">Fitness Tracker</span>
+		</div>
+		<nav class="sidebar-nav">
+			<a href="./home.html" class="active">Home</a>
+			<a href="/progress.html">Progress</a>
+			<a href="/reports.html">Reports</a>
+			<a href="./gym-guide.html">gym guide</a>
+			<a href="./reminder.html" class="active">Remainder</a>
+			<a href="/about.html">About</a>
+			<a href="/help.html" class="active">Help</a>
+			<a href="/settings.html">Settings</a>
+			<a href="/chatbot.html">Chatbot</a>
+		</nav>
+		<div class="sidebar-user">
+			<div class="user-avatar">👤</div>
+			<div class="user-name">raj</div>
+			<a href="/logout.html" class="logout-btn">Logout</a>
+		</div>
+	</div>
+			<main class="main-content">
+				<div style="display:flex;justify-content:flex-end;align-items:center;margin-bottom:12px;">
+				  <input id="settings-bot-input" type="text" placeholder="Search or ask... (e.g. 'open reminder', 'logout')" style="padding:10px 14px;font-size:1rem;border-radius:8px;border:1.5px solid #b7e4c7;width:220px;">
+				  <button onclick="window.openSetting(document.getElementById('settings-bot-input').value)" style="padding:10px 18px;font-size:1rem;border-radius:8px;background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;font-weight:700;border:none;cursor:pointer;margin-left:8px;">Search</button>
+				</div>
+				<div id="exercise-reminder-bar" style="background:linear-gradient(90deg,#43cea2 0%,#185a9d 100%);color:#fff;padding:14px 24px;border-radius:10px;margin-bottom:24px;font-size:1.15rem;font-weight:600;max-width:600px;box-shadow:0 2px 8px rgba(30,60,114,0.10);"></div>
+		   <h1 class="dashboard-title">Help & FAQ</h1>
+		   <div class="chart-section">
+		      <h2 style="color:#43cea2;">Help & Frequently Asked Questions</h2>
+		      <ul style="margin-bottom:18px;line-height:1.7;">
+		         <li><b>How do I add a workout?</b> Use the form on the Home page to log your exercise. Enter the type, duration, calories, and date, then click "Assign Task".</li>
+		         <li><b>How do I mark a workout as complete?</b> Click the ✅ icon next to the workout in your list to mark it as finished.</li>
+		         <li><b>Where can I see my progress?</b> Go to the Progress page for charts and stats, or the Reports page for detailed tables.</li>
+		         <li><b>How do I set or edit my exercise reminder?</b> Visit the Reminder page to customize your daily exercise message.</li>
+		         <li><b>How do I log out?</b> Use the Logout button at the bottom of the sidebar or in the Settings page.</li>
+		         <li><b>Need more help?</b> Contact support or check the About page for more info.</li>
+		      </ul>
+		      <p>Fitness Tracker is designed to be intuitive, but if you have questions or feedback, we're here to help you succeed!</p>
+		   </div>
+	</main>
+	<footer class="footer-bar">
+		<span>© 2025 Fitness Tracker. All rights reserved.</span>
+	</footer>
+		<script src="/reminder-bar.js"></script>
+		<script src="/settings-bot.js"></script>
+</body>
+</html>

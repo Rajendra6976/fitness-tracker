@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Out - Fitness Tracker</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body class="auth-hero">
+    <div class="auth-shell" style="max-width:720px; grid-template-columns: 1fr;">
+        <div class="auth-left" style="background: linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04)); color:#eafff4;">
+            <span class="brand-badge">💪 Fitness Tracker</span>
+            <h2>Logging you out...</h2>
+            <p id="msg">Please wait while we log you out...</p>
+            <div id="loading-spinner" style="margin: 20px 0;">
+                <div style="width: 40px; height: 40px; border: 4px solid rgba(255,255,255,0.3); border-top: 4px solid #43cea2; border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto;"></div>
+            </div>
+            <div class="auth-links" id="action-links" style="display: none;">
+                <a href="/" style="color: #43cea2; text-decoration: none; margin-right: 20px;">🏠 Back to Home</a>
+                <a href="/signup.html" style="color: #43cea2; text-decoration: none;">📝 Sign Up Again</a>
+            </div>
+        </div>
+    </div>
+    
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .success-message {
+            color: #56ab2f;
+            font-weight: bold;
+        }
+        
+        .error-message {
+            color: #ff5858;
+            font-weight: bold;
+        }
+    </style>
+    
+    <script>
+        // Function to perform logout
+        async function performLogout() {
+            const msgElement = document.getElementById('msg');
+            const spinnerElement = document.getElementById('loading-spinner');
+            const actionLinksElement = document.getElementById('action-links');
+            
+            try {
+                // Call the logout API
+                const response = await fetch('/api/logout', { 
+                    method: 'POST',
+                    credentials: 'include' // Include session cookies
+                });
+                
+                if (response.ok) {
+                    // Success
+                    msgElement.textContent = '✅ Successfully logged out!';
+                    msgElement.className = 'success-message';
+                    spinnerElement.style.display = 'none';
+                    actionLinksElement.style.display = 'block';
+                    
+                    // Clear any remaining localStorage
+                    localStorage.removeItem('fitnessUsername');
+                    localStorage.removeItem('fitnessUserId');
+                    
+                    // Redirect after 2 seconds
+                    setTimeout(() => {
+                        window.location.href = '/signup.html';
+                    }, 2000);
+                    
+                } else {
+                    throw new Error('Logout API returned error');
+                }
+                
+            } catch (error) {
+                console.error('Logout error:', error);
+                
+                // Show error message
+                msgElement.textContent = '⚠️ Logout failed, but you can still continue.';
+                msgElement.className = 'error-message';
+                spinnerElement.style.display = 'none';
+                actionLinksElement.style.display = 'block';
+                
+                // Clear localStorage anyway
+                localStorage.removeItem('fitnessUsername');
+                localStorage.removeItem('fitnessUserId');
+                
+                // Redirect after 3 seconds even on error
+                setTimeout(() => {
+                    window.location.href = '/signup.html';
+                }, 3000);
+            }
+        }
+        
+        // Start logout process when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            performLogout();
+        });
+    </script>
+</body>
+</html>
+
+

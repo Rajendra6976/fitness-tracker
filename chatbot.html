@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fitness Chatbot</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .chatbot-container { max-width: 600px; margin: 48px auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 16px rgba(30,60,114,0.10); padding: 32px 24px; }
+    .chatbot-title { font-size: 2rem; color: #43cea2; text-align: center; margin-bottom: 18px; }
+    .chat-history { min-height: 220px; max-height: 320px; overflow-y: auto; background: #f1faee; border-radius: 10px; padding: 18px; margin-bottom: 18px; font-size: 1.08rem; }
+    .chat-input-row { display: flex; gap: 10px; }
+    .chat-input { flex: 1; padding: 12px; border-radius: 8px; border: 1.5px solid #b7e4c7; font-size: 1.1rem; }
+    .chat-send-btn { padding: 18px 44px; font-size:1.25rem; border-radius: 10px; background: linear-gradient(90deg,#43cea2 0%,#185a9d 100%); color: #fff; font-weight: 700; border: none; cursor: pointer; box-shadow:0 2px 8px #43cea233; }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo" style="color:#43cea2;filter:drop-shadow(0 0 6px #43cea2);">🤖</span>
+      <span class="sidebar-title">Fitness Tracker</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="/home.html">Home</a>
+      <a href="/progress.html">Progress</a>
+      <a href="/reports.html">Reports</a>
+      <a href="/gym-guide.html">Gym Guide</a>
+      <a href="/reminder.html">Reminder</a>
+      <a href="/about.html">About</a>
+      <a href="/help.html">Help</a>
+      <a href="/settings.html">Settings</a>
+      <a href="/chatbot.html" class="active">Chatbot</a>
+    </nav>
+    <div class="sidebar-user">
+      <div class="user-avatar">👤</div>
+      <div class="user-name" id="sidebar-username">raj</div>
+      <a href="/logout.html" class="logout-btn">Logout</a>
+    </div>
+  </div>
+  <main class="main-content">
+    <div class="chatbot-container">
+      <div class="chatbot-title">Fitness Chatbot</div>
+      <div class="chat-history" id="chat-history"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chat-input" class="chat-input" placeholder="Ask me about fitness, workouts, or settings...">
+        <button class="chat-send-btn" onclick="sendChat()">Send</button>
+      </div>
+    </div>
+  </main>
+  <footer class="footer-bar">
+    <span>© 2025 Fitness Tracker. All rights reserved.</span>
+  </footer>
+  <script>
+    // Enhanced chatbot logic for fitness, diet, and exercise variations
+    const chatHistory = document.getElementById('chat-history');
+    const chatInput = document.getElementById('chat-input');
+    function appendMessage(sender, text) {
+      const msg = document.createElement('div');
+      msg.innerHTML = `<b>${sender}:</b> ${text}`;
+      chatHistory.appendChild(msg);
+      chatHistory.style.display = 'none';
+      chatHistory.offsetHeight;
+      chatHistory.style.display = '';
+      chatHistory.scrollTop = chatHistory.scrollHeight;
+    }
+    function sendChat() {
+      const userMsg = chatInput.value.trim();
+      if (!userMsg) return;
+      appendMessage('You', userMsg);
+      chatInput.value = '';
+      setTimeout(() => respondTo(userMsg), 300);
+    }
+    function respondTo(msg) {
+      msg = msg.toLowerCase();
+      // Diet plan suggestions
+      if (msg.includes('diet') || msg.includes('meal') || msg.includes('nutrition')) {
+        appendMessage('Bot', `Here's a simple balanced diet plan:<br>
+        <ul style="margin:6px 0 0 18px;">
+          <li><b>Breakfast:</b> Oatmeal with fruit, or eggs with whole grain toast.</li>
+          <li><b>Lunch:</b> Grilled chicken/fish, brown rice, and veggies.</li>
+          <li><b>Snack:</b> Greek yogurt, nuts, or a fruit.</li>
+          <li><b>Dinner:</b> Stir-fried veggies with tofu or lean protein, quinoa or sweet potato.</li>
+        </ul>
+        <small>Tip: Stay hydrated and avoid sugary drinks. Adjust portions to your goals!</small>`);
+      }
+      // Exercise variations
+      else if (msg.includes('variation') || msg.includes('different exercise') || msg.includes('exercise for') || msg.includes('alternative')) {
+        appendMessage('Bot', `Here are some exercise variations:<br>
+        <ul style="margin:6px 0 0 18px;">
+          <li><b>Push-ups:</b> Try incline, decline, diamond, or wide-grip push-ups.</li>
+          <li><b>Squats:</b> Goblet squats, jump squats, split squats, or sumo squats.</li>
+          <li><b>Planks:</b> Side planks, plank with shoulder taps, or plank jacks.</li>
+          <li><b>Cardio:</b> Alternate between running, cycling, jumping rope, or HIIT routines.</li>
+        </ul>
+        <small>Let me know which muscle group you want to target for more ideas!</small>`);
+      }
+      // Fitness Q&A
+      else if (msg.includes('workout') || msg.includes('exercise')) {
+        appendMessage('Bot', 'Aim for at least 30 minutes of exercise daily. Mix cardio, strength, and flexibility for best results! Ask for "exercise variations" for more ideas.');
+      } else if (msg.includes('reminder')) {
+        appendMessage('Bot', 'You can set or edit your daily exercise reminder on the Reminder page.');
+      } else if (msg.includes('settings')) {
+        appendMessage('Bot', 'You can update your preferences and connect Google Calendar in the Settings page.');
+      } else if (msg.includes('logout')) {
+        appendMessage('Bot', 'To logout, use the Logout button at the bottom of the sidebar or in Settings.');
+      } else if (msg.includes('progress')) {
+        appendMessage('Bot', 'Check your Progress page for charts and stats about your workouts.');
+      } else if (msg.includes('report')) {
+        appendMessage('Bot', 'The Reports page shows a detailed table of all your logged workouts.');
+      } else if (msg.includes('gym guide')) {
+        appendMessage('Bot', 'Visit the Gym Guide page for beginner routines and tips for men and women.');
+      } else if (msg.includes('calorie')) {
+        appendMessage('Bot', 'Calories burned depend on workout type and duration. The app auto-calculates this for you!');
+      } else if (msg.includes('help')) {
+        appendMessage('Bot', 'Visit the Help page for FAQs or ask me anything about using the app!');
+      } else if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey')) {
+        appendMessage('Bot', 'Hello! How can I help you with your fitness journey today? You can ask about diet, exercise variations, or app features.');
+      } else {
+        appendMessage('Bot', "I'm here to help with fitness, diet, and app settings. Try asking about diet plans, exercise variations, or navigation!");
+      }
+    }
+    chatInput.addEventListener('keydown', function(e) { if (e.key === 'Enter') sendChat(); });
+    window.addEventListener('DOMContentLoaded', function() {
+      chatHistory.style.display = '';
+    });
+  </script>
+  <script src="/settings-bot.js"></script>
+</body>
+</html>
